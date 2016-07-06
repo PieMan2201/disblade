@@ -1,0 +1,50 @@
+DISPLAY 79,22
+STORAGE 10,10
+
+STORAGE(0,0) from 0
+STORAGE(1,0) from 0
+STORAGE(0,1) from 1
+STORAGE(1,1) from 1
+
+EVALUATE STORAGE
+DLY from 5
+
+WHL(1=1){
+
+STORAGE(0,0) from STORAGE(0,2)
+STORAGE(1,0) from STORAGE(1,2)
+EVALUATE STORAGE
+
+CLEAR DISPLAY
+~DISPLAY(0,0) from "Demo"
+
+DISPLAY(STORAGE(0,0),STORAGE(1,0)) from "X"
+
+IF(STORAGE(0,2)=0){
+ IF(STORAGE(0,1)<0){
+  STORAGE(0,1) from 1
+ }
+}
+
+IF(STORAGE(0,2)=78){
+ IF(STORAGE(0,1)>0){
+  STORAGE(0,1) from -1
+ }
+}
+
+IF(STORAGE(1,2)=0){
+ IF(STORAGE(1,1)<0){
+  STORAGE(1,1) from 1
+ }
+}
+
+IF(STORAGE(1,2)=21){
+ IF(STORAGE(1,1)>0){
+  STORAGE(1,1) from -1
+ }
+}
+
+EVALUATE DISPLAY
+DLY from 1
+
+}

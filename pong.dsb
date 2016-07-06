@@ -1,0 +1,95 @@
+DISPLAY 79,22
+STORAGE 10,10
+
+STORAGE(0,0) from 0
+STORAGE(1,0) from 0
+STORAGE(0,1) from 1
+STORAGE(1,1) from 1
+
+STORAGE(4,0) from 0
+STORAGE(4,1) from 0
+STORAGE(6,2) from 4
+
+WHL(1=1){
+ CLEAR DISPLAY
+ 
+ STORAGE(8,8) from KYPRS
+ STORAGE(4,1) from 0
+ IF(STORAGE(0,0)=0){
+  IF(STORAGE(0,1)<0){
+   STORAGE(0,1) from 1
+  }
+ }
+ 
+ IF(STORAGE(0,0)=77){
+  IF(STORAGE(1,0)>STORAGE(4,0)){
+   IF(STORAGE(1,0)<STORAGE(6,2)){
+    STORAGE(0,1) from -1
+   }
+  }
+  IF(STORAGE(1,0)=STORAGE(4,0)){
+   STORAGE(0,1) from -1
+  }
+ }
+ IF(STORAGE(0,0)=78){
+  WHL(1=1){
+   CLEAR DISPLAY
+   DISPLAY(4,4) from "YOU LOSE"
+   EVALUATE DISPLAY
+   STORAGE(8,8) from KYPRS
+   IF(STORAGE(8,8)=32){
+    HALTCODE
+   }
+   DLY from 5
+  }
+ }
+ 
+ IF(STORAGE(1,0)=0){
+  IF(STORAGE(1,1)<0){
+   STORAGE(1,1) from 1
+  }
+ }
+ 
+ IF(STORAGE(1,0)=21){
+  IF(STORAGE(1,1)>0){
+    STORAGE(1,1) from -1
+  }
+ }
+
+ EVALUATE STORAGE
+ STORAGE(0,0) from STORAGE(0,2)
+ STORAGE(1,0) from STORAGE(1,2)
+ 
+ IF(STORAGE(8,8)=65){
+  IF(STORAGE(4,0)>0){
+   STORAGE(4,1) from -1
+  }
+ }
+ IF(STORAGE(8,8)=66){
+  IF(STORAGE(4,0)<18){
+   STORAGE(4,1) from 1
+  }
+ }
+
+ EVALUATE STORAGE
+
+ STORAGE(4,0) from STORAGE(4,2)
+ STORAGE(6,0) from STORAGE(4,0)
+ STORAGE(6,1) from 4
+ STORAGE(7,0) from STORAGE(4,0)
+ EVALUATE STORAGE
+
+ WHL(STORAGE(7,0)<STORAGE(6,2)){
+  STORAGE(7,7) from 78
+  DISPLAY(STORAGE(7,7),STORAGE(7,0)) from "8"
+  STORAGE(7,1) from 1
+  EVALUATE STORAGE
+  STORAGE(7,0) from STORAGE(7,2)
+ }
+
+ DISPLAY(STORAGE(0,0),STORAGE(1,0)) from "X"
+ 
+ EVALUATE DISPLAY
+ 
+ DLY from 1
+}

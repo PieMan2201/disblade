@@ -1,0 +1,36 @@
+DISBLADE 
+
+---GRID MECHANICS---
+-STORAGE
+All operations are on an execution grid.
+The size of this grid can be expanded to suit the needs of the program, and is defined at the beginning of execution.
+Multiplication operates left>right, addition goes up>down.
+Operations are carried out when the grid is updated, going down each column.
+
+-DISPLAY
+There exists another grid of variable size, designed for user-readable output.
+No operations occur on this grid.
+The display grid can be modified during execution, but these modifications will not be shown until it is updated.
+
+---DATA TYPES---
+All numbers are reated as floating points. Conversion is done in the interpreter for certain tasks (e.g indices)
+There is no boolean type. Equalities are equivalent to true, and inequalites false.
+
+---EXECUTION---
+One must use the EVALUATE command to execute applied commands.
+No operations occur on the execution grid until the command is called on said grid.
+No output is displayed until the command is called on the display.
+The EVALUATE statement essentially updated the specified grid.
+
+---CONDITIONALS---
+Conditions exist where needed in the form "(x=y)"
+WHL(){} is used for while loops, where () is the condition and {} is the code.
+DLY is used to pause execution for a specified amount of time (deciseconds). Use as drain of "from".
+IF(){} is used for if statements. Usage is the same as WHL.
+
+---MISCELLANEOUS---
+Lines can be commented out by prefacing them with a "~". 
+Any line beginning with this character will not be executed.
+Indentation does not matter.
+All commands must end with a newline.
+The recommended filename extension is ".dsb", though the interpreter will accept any plaintext file.
